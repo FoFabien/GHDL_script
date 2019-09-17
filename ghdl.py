@@ -12,6 +12,8 @@ class GHDL():
 
         signal.signal(signal.SIGINT, self.sigint)
         self.load()
+        self.start()
+        self.save()
 
     def sigint(self, sig, frame):
         print('\n')
@@ -196,10 +198,8 @@ class GHDL():
 
     def start(self):
         # we start HERE
-        print("GHDL quick use script v0.3b")
+        print("GHDL quick use script v0.3c")
         while self.loop(): # loop as long as loop() returns true
             pass
 
-g = GHDL()
-g.start()
-g.save()
+GHDL()
