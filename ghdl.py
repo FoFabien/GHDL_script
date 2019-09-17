@@ -16,7 +16,7 @@ class GHDL():
     def sigint(self, sig, frame):
         print('\n')
 
-    def load(self): # same thing but for save.json
+    def load(self):
         try:
             with open('settings.json') as f:
                 data = json.load(f)
@@ -31,7 +31,7 @@ class GHDL():
             return False
         return False
 
-    def save(self, sortBackup=True): # saving
+    def save(self, sortBackup=True):
         try:
             with open('settings.json', 'w') as f:
                 data = {}
@@ -131,6 +131,7 @@ class GHDL():
             try:
                 os.mkdir(self.workpath + "\\" + d)
                 self.current = d
+                self.save()
                 print("Folder '" + d + "' created and set")
             except Exception as e:
                 print("Error:", e)
@@ -140,6 +141,7 @@ class GHDL():
                 return True
             if self.isDir(self.workpath + "\\" + d):
                 self.current = d
+                self.save()
                 print("Project '" + d + "' is set")
                 return True
             else:
@@ -194,7 +196,7 @@ class GHDL():
 
     def start(self):
         # we start HERE
-        print("GHDL quick use script v0.3")
+        print("GHDL quick use script v0.3b")
         while self.loop(): # loop as long as loop() returns true
             pass
 
